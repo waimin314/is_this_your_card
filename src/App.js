@@ -1,9 +1,11 @@
-import React from "react";
+import React, { Component } from "react";
 import "./App.css";
 import Card from "./components/Card";
 
-function App() {
-  return <Card number={11} />;
+class App extends Component {
+  render() {
+    return <Card number={11} />;
+  }
 }
 
 export default App;
