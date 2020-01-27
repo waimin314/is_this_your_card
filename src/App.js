@@ -21,6 +21,7 @@ class App extends Component {
       14,
       15,
       16,
+      17,
       18,
       19,
       20,
@@ -35,13 +36,13 @@ class App extends Component {
   };
 
   renderGrid = () => {
-    return this.state.numbers.map(num => {
-      return <Card number={num} />;
+    return this.state.numbers.map((num, i) => {
+      return <Card key={i} number={num} />;
     });
   };
 
   render() {
-    return <div>{this.renderGrid()}</div>;
+    return <div className="grid-container">{this.renderGrid()}</div>;
   }
 }
 
