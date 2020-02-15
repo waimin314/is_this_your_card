@@ -2,37 +2,31 @@ import React, { Component } from "react";
 import "./App.css";
 import Card from "./components/Card";
 
+const TOTAL_CARDS = 27;
+
 class App extends Component {
-  state = {
-    numbers: [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10,
-      11,
-      12,
-      13,
-      14,
-      15,
-      16,
-      17,
-      18,
-      19,
-      20,
-      21,
-      22,
-      23,
-      24,
-      25,
-      26,
-      27
-    ]
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      numbers: this.getRandNumArray()
+    };
+  }
+
+  getRandNumArray = () => {
+    let numArray = [];
+
+    // Populate with TOTAL_CARDS numbers
+    for (let i = 1; i <= TOTAL_CARDS; i++) numArray.push(i);
+
+    //Shuffle
+    for (let j = TOTAL_CARDS - 1; j >= 0; j--) {
+      let random = Math.floor(Math.random() * j);
+      let tmp = numArray[random];
+      numArray[random] = numArray[j];
+      numArray[j] = tmp;
+    }
+    return numArray;
   };
 
   renderGrid = () => {
