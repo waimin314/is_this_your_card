@@ -36,7 +36,16 @@ class App extends Component {
   };
 
   render() {
-    return <div className="grid-container">{this.renderGrid()}</div>;
+    return (
+      <div className="main">
+        <div className="grid-container">{this.renderGrid()}</div>
+        <div className="buttons-container">
+          <div className="button">Select</div>
+          <div className="button">Select</div>
+          <div className="button">Select</div>
+        </div>
+      </div>
+    );
   }
 }
 
