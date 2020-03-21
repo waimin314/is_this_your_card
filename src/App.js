@@ -11,7 +11,8 @@ class App extends Component {
     super(props);
 
     this.state = {
-      numbers: this.getRandNumArray()
+      numbers: this.getRandNumArray(),
+      possibleNums: []
     };
   }
 
@@ -35,18 +36,36 @@ class App extends Component {
         break;
 
       case 2:
-        newNumbers = [...col_2, ...col_1, ...col_3];
+        newNumbers = [...col_1, ...col_2, ...col_3];
         break;
 
       case 3:
-        newNumbers = [...col_2, ...col_1, ...col_3];
+        newNumbers = [...col_2, ...col_3, ...col_1];
         break;
 
       default:
         break;
     }
 
-    this.setState({ numbers: newNumbers });
+    let prvPosNums = this.state.possibleNums;
+    let curPosNums = newNumbers.slice(CARDS_PER_COL * 1, CARDS_PER_COL * 2);
+    let newPosNums = [];
+    if (prvPosNums.length === 0) {
+      newPosNums = curPosNums;
+    } else {
+      prvPosNums.forEach(n => {
+        if (curPosNums.includes(n)) newPosNums.push(n);
+      });
+    }
+    this.setState(
+      {
+        numbers: newNumbers,
+        possibleNums: newPosNums
+      },
+      () => {
+        console.log(this.state.possibleNums);
+      }
+    );
   };
 
   getRandNumArray = () => {
