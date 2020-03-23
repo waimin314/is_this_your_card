@@ -9,12 +9,20 @@ const CARDS_PER_COL = TOTAL_CARDS / TOTAL_COL;
 class App extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       numbers: this.getRandNumArray(),
-      possibleNums: []
+      possibleNums: [],
+      stage: 0
     };
   }
+
+  execute = colNumber => {
+    this.setState(this.state.stage + 1);
+    let tmp_nums = this.colToRows(colNumber);
+    this.updatePossibleNums(
+      tmp_nums.slice(CARDS_PER_COL * 1, CARDS_PER_COL * 2)
+    );
+  };
 
   colToRows = colNumber => {
     let newNumbers = [];
@@ -46,20 +54,25 @@ class App extends Component {
       default:
         break;
     }
+    this.setState({
+      numbers: newNumbers
+    });
 
+    return newNumbers;
+  };
+
+  updatePossibleNums = selectedNums => {
     let prvPosNums = this.state.possibleNums;
-    let curPosNums = newNumbers.slice(CARDS_PER_COL * 1, CARDS_PER_COL * 2);
     let newPosNums = [];
     if (prvPosNums.length === 0) {
-      newPosNums = curPosNums;
+      newPosNums = selectedNums;
     } else {
       prvPosNums.forEach(n => {
-        if (curPosNums.includes(n)) newPosNums.push(n);
+        if (selectedNums.includes(n)) newPosNums.push(n);
       });
     }
     this.setState(
       {
-        numbers: newNumbers,
         possibleNums: newPosNums
       },
       () => {
@@ -95,13 +108,13 @@ class App extends Component {
       <div className="main">
         <div className="grid-container">{this.renderGrid()}</div>
         <div className="buttons-container">
-          <div className="button" onClick={() => this.colToRows(1)}>
+          <div className="button" onClick={() => this.execute(1)}>
             Select
           </div>
-          <div className="button" onClick={() => this.colToRows(2)}>
+          <div className="button" onClick={() => this.execute(2)}>
             Select
           </div>
-          <div className="button" onClick={() => this.colToRows(3)}>
+          <div className="button" onClick={() => this.execute(3)}>
             Select
           </div>
         </div>
