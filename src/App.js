@@ -17,11 +17,17 @@ class App extends Component {
   }
 
   execute = colNumber => {
-    this.setState(this.state.stage + 1);
     let tmp_nums = this.colToRows(colNumber);
     this.updatePossibleNums(
       tmp_nums.slice(CARDS_PER_COL * 1, CARDS_PER_COL * 2)
     );
+    this.setState({ stage: this.state.stage + 1 }, this.showPopup);
+  };
+
+  showPopup = () => {
+    if (this.state.stage === 3) {
+      console.log("Show Popup");
+    }
   };
 
   colToRows = colNumber => {
