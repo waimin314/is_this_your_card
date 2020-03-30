@@ -1,5 +1,7 @@
-import React from "react";
+import React, { Component } from "react";
 
-export default function Popup() {
-  return <div></div>;
+export default class Popup extends Component {
+  render() {
+    return <div></div>;
+  }
 }
