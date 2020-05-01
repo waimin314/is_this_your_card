@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import Card from "./components/Card";
+import Popup from "./components/Popup";
 
 const TOTAL_CARDS = 27;
 const TOTAL_COL = 3;
@@ -12,11 +13,11 @@ class App extends Component {
     this.state = {
       numbers: this.getRandNumArray(),
       possibleNums: [],
-      stage: 0
+      stage: 0,
     };
   }
 
-  execute = colNumber => {
+  execute = (colNumber) => {
     let tmp_nums = this.colToRows(colNumber);
     this.updatePossibleNums(
       tmp_nums.slice(CARDS_PER_COL * 1, CARDS_PER_COL * 2)
@@ -30,7 +31,7 @@ class App extends Component {
     }
   };
 
-  colToRows = colNumber => {
+  colToRows = (colNumber) => {
     let newNumbers = [];
     for (let i = 0; i < TOTAL_COL; i++) {
       newNumbers.push(this.state.numbers[i]);
@@ -61,25 +62,25 @@ class App extends Component {
         break;
     }
     this.setState({
-      numbers: newNumbers
+      numbers: newNumbers,
     });
 
     return newNumbers;
   };
 
-  updatePossibleNums = selectedNums => {
+  updatePossibleNums = (selectedNums) => {
     let prvPosNums = this.state.possibleNums;
     let newPosNums = [];
     if (prvPosNums.length === 0) {
       newPosNums = selectedNums;
     } else {
-      prvPosNums.forEach(n => {
+      prvPosNums.forEach((n) => {
         if (selectedNums.includes(n)) newPosNums.push(n);
       });
     }
     this.setState(
       {
-        possibleNums: newPosNums
+        possibleNums: newPosNums,
       },
       () => {
         console.log(this.state.possibleNums);
@@ -112,6 +113,7 @@ class App extends Component {
   render() {
     return (
       <div className="main">
+        <Popup number={3} isVisible={true} />
         <div className="grid-container">{this.renderGrid()}</div>
         <div className="buttons-container">
           <div className="button" onClick={() => this.execute(1)}>
