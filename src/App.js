@@ -113,7 +113,10 @@ class App extends Component {
   render() {
     return (
       <div className="main">
-        <Popup number={3} isVisible={true} />
+        <Popup
+          number={this.state.possibleNums}
+          isVisible={this.state.stage === 3 ? true : false}
+        />
         <div className="grid-container">{this.renderGrid()}</div>
         <div className="buttons-container">
           <div className="button" onClick={() => this.execute(1)}>
