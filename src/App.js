@@ -110,12 +110,21 @@ class App extends Component {
     });
   };
 
+  reset = () => {
+    this.setState({
+      numbers: this.getRandNumArray(),
+      possibleNums: [],
+      stage: 0,
+    });
+  };
+
   render() {
     return (
       <div className="main">
         <Popup
           number={this.state.possibleNums}
           isVisible={this.state.stage === 3 ? true : false}
+          restartHandler={this.reset}
         />
         <div className="grid-container">{this.renderGrid()}</div>
         <div className="buttons-container">
