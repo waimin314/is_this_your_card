@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import Card from "./components/Card";
 import Popup from "./components/Popup";
+import FlipMove from "react-flip-move";
 
 const TOTAL_CARDS = 27;
 const TOTAL_COL = 3;
@@ -94,7 +95,7 @@ class App extends Component {
     // Populate with TOTAL_CARDS numbers
     for (let i = 1; i <= TOTAL_CARDS; i++) numArray.push(i);
 
-    //Shuffle
+    // //Shuffle;
     // for (let j = TOTAL_CARDS - 1; j >= 0; j--) {
     //   let random = Math.floor(Math.random() * j);
     //   let tmp = numArray[random];
@@ -106,7 +107,11 @@ class App extends Component {
 
   renderGrid = () => {
     return this.state.numbers.map((num, i) => {
-      return <Card key={i} number={num} />;
+      return (
+        <div key={num}>
+          <Card number={num} />
+        </div>
+      );
     });
   };
 
@@ -126,7 +131,9 @@ class App extends Component {
           isVisible={this.state.stage === 3 ? true : false}
           restartHandler={this.reset}
         />
-        <div className="grid-container">{this.renderGrid()}</div>
+
+        <FlipMove className="grid-container">{this.renderGrid()}</FlipMove>
+
         <div className="buttons-container">
           <div className="button" onClick={() => this.execute(1)}>
             Select
