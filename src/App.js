@@ -132,7 +132,14 @@ class App extends Component {
           restartHandler={this.reset}
         />
 
-        <FlipMove className="grid-container">{this.renderGrid()}</FlipMove>
+        <FlipMove
+          easing="ease-in-out"
+          duration={500}
+          staggerDelayBy={20}
+          className="grid-container"
+        >
+          {this.renderGrid()}
+        </FlipMove>
 
         <div className="buttons-container">
           <div className="button" onClick={() => this.execute(1)}>
