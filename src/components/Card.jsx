@@ -3,20 +3,23 @@ import React from "react";
 export default function Card(props) {
   const cardStyle = {
     display: "flex",
-    color: "white",
     justifyContent: "center",
     alignItems: "center",
     width: "20px",
     height: "30px",
-    backgroundColor: "DodgerBlue",
+    backgroundColor: "white",
     padding: "10px",
-    fontFamily: "Arial",
     borderRadius: "5px",
-    margin: "10px 20px"
+    margin: "10px 20px",
+    boxShadow:
+      "0 2.8px 2.2px rgba(0, 0, 0, 0.02),0 6.7px 5.3px rgba(0, 0, 0, 0.028)",
   };
 
   const numStyle = {
-    fontSize: "20px"
+    fontSize: "20px",
+    fontFamily: "Poppins",
+    fontWeight: "400",
+    color: "#3D3B90",
   };
 
   return (

@@ -95,13 +95,13 @@ class App extends Component {
     // Populate with TOTAL_CARDS numbers
     for (let i = 1; i <= TOTAL_CARDS; i++) numArray.push(i);
 
-    // //Shuffle;
-    // for (let j = TOTAL_CARDS - 1; j >= 0; j--) {
-    //   let random = Math.floor(Math.random() * j);
-    //   let tmp = numArray[random];
-    //   numArray[random] = numArray[j];
-    //   numArray[j] = tmp;
-    // }
+    //Shuffle;
+    for (let j = TOTAL_CARDS - 1; j >= 0; j--) {
+      let random = Math.floor(Math.random() * j);
+      let tmp = numArray[random];
+      numArray[random] = numArray[j];
+      numArray[j] = tmp;
+    }
     return numArray;
   };
 
