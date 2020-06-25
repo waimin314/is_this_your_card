@@ -4,9 +4,14 @@ import Card from "./components/Card";
 import Popup from "./components/Popup";
 import FlipMove from "react-flip-move";
 
-const TOTAL_CARDS = 27;
+const TOTAL_CARDS = 24;
 const TOTAL_COL = 3;
 const CARDS_PER_COL = TOTAL_CARDS / TOTAL_COL;
+const INSTUCTIONS = [
+  "Pick a card and select its column",
+  "Select its column again",
+  "Is this your card?",
+];
 
 class App extends Component {
   constructor(props) {
@@ -15,15 +20,33 @@ class App extends Component {
       numbers: this.getRandNumArray(),
       possibleNums: [],
       stage: 0,
+      instruction: INSTUCTIONS[0],
     };
   }
 
   execute = (colNumber) => {
+    if (this.state.stage >= 3) return;
     let tmp_nums = this.colToRows(colNumber);
     this.updatePossibleNums(
       tmp_nums.slice(CARDS_PER_COL * 1, CARDS_PER_COL * 2)
     );
+    this.setInstruction();
     this.setState({ stage: this.state.stage + 1 }, this.showPopup);
+  };
+
+  setInstruction = () => {
+    switch (this.state.stage + 1) {
+      case 0:
+        this.setState({ instruction: INSTUCTIONS[0] });
+        break;
+      case 1:
+      case 2:
+        this.setState({ instruction: INSTUCTIONS[1] });
+        break;
+      case 3:
+        this.setState({ instruction: INSTUCTIONS[2] });
+        break;
+    }
   };
 
   showPopup = () => {
@@ -120,36 +143,40 @@ class App extends Component {
       numbers: this.getRandNumArray(),
       possibleNums: [],
       stage: 0,
+      instruction: INSTUCTIONS[0],
     });
   };
 
   render() {
     return (
-      <div className="main">
-        <Popup
-          number={this.state.possibleNums}
-          isVisible={this.state.stage === 3 ? true : false}
-          restartHandler={this.reset}
-        />
+      <div>
+        <div className="instruction">{this.state.instruction}</div>
+        <div className="main">
+          <Popup
+            number={this.state.possibleNums}
+            isVisible={this.state.stage === 3 ? true : false}
+            restartHandler={this.reset}
+          />
 
-        <FlipMove
-          easing="ease-in-out"
-          duration={500}
-          staggerDelayBy={20}
-          className="grid-container"
-        >
-          {this.renderGrid()}
-        </FlipMove>
+          <FlipMove
+            easing="ease-in-out"
+            duration={500}
+            staggerDelayBy={20}
+            className="grid-container"
+          >
+            {this.renderGrid()}
+          </FlipMove>
 
-        <div className="buttons-container">
-          <div className="button" onClick={() => this.execute(1)}>
-            Select
-          </div>
-          <div className="button" onClick={() => this.execute(2)}>
-            Select
-          </div>
-          <div className="button" onClick={() => this.execute(3)}>
-            Select
+          <div className="buttons-container">
+            <div className="button" onClick={() => this.execute(1)}>
+              Select
+            </div>
+            <div className="button" onClick={() => this.execute(2)}>
+              Select
+            </div>
+            <div className="button" onClick={() => this.execute(3)}>
+              Select
+            </div>
           </div>
         </div>
       </div>

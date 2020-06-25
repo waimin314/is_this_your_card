@@ -1,6 +1,6 @@
 .main {
   width: 240px;
-  margin: 20px auto;
+  margin: auto;
   background-color: #5ab1bb;
   border-radius: 5px;
   padding: 10px;
@@ -37,4 +37,15 @@
 
 .button:active {
   transform: scale(1.1);
+}
+
+.instruction {
+  max-width: 300px;
+  margin: 3px auto;
+  background-color: #8483c3;
+  border: 1px solid purple;
+  border-radius: 5px;
+  padding: 5px;
+  font-family: "Poppins";
+  text-align: center;
 }
