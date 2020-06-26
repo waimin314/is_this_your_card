@@ -46,6 +46,8 @@ class App extends Component {
       case 3:
         this.setState({ instruction: INSTUCTIONS[2] });
         break;
+      default:
+        console.log("Invalid stage " + this.state.stage + 1);
     }
   };
 
