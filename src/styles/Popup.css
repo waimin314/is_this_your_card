@@ -10,7 +10,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #84c4f5;
+  background-color: #8ec7ce;
+  border: 1px solid #7877c7;
   padding: 30px;
   border-radius: 10px;
   box-shadow: 5px 5px 10px 3px #888;
@@ -31,21 +32,21 @@
   height: 40px;
   font-size: 1em;
   color: white;
-  box-shadow: 1px 1px 3px 1px #888;
+  font-family: "Poppins";
+  box-shadow: inset 0 -10px 0 -6px rgba(0, 0, 0, 0.17);
 }
 
 .btn:hover {
-  border: 3px solid rgba(0, 0, 0, 0.25);
   transform: translateY(-3px);
   cursor: pointer;
 }
 
 .btn:active {
-  transform: translateY(+3px);
+  transform: scale(1.1);
 }
 
 .btn-restart {
-  background-color: #5670f5;
+  background-color: #7877c7;
 }
 
 .btn-close {
