@@ -8,12 +8,14 @@ export default function Popup(props) {
   return (
     <div className="container">
       <div className="content">
-        <Card number={props.number} />
+        <div className="title">Is this your card?</div>
+        <div className="cardWrapper">
+          <Card number={props.number} />
+        </div>
         <div className="btnContainer">
           <button onClick={props.restartHandler} className="btn btn-restart">
             Restart
           </button>
-          <button className="btn btn-close">Close</button>
         </div>
       </div>
     </div>

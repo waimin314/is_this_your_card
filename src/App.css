@@ -40,11 +40,11 @@
 }
 
 .instruction {
-  max-width: 300px;
+  max-width: 400px;
   margin: 3px auto;
   background-color: #8483c3;
   border: 1px solid purple;
-  border-radius: 5px;
+  border-radius: 2px;
   padding: 5px;
   font-family: "Poppins";
   text-align: center;

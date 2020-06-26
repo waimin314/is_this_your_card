@@ -8,6 +8,7 @@
 
 .content {
   display: flex;
+  width: 250px;
   flex-direction: column;
   align-items: center;
   background-color: #8ec7ce;
@@ -15,6 +16,26 @@
   padding: 30px;
   border-radius: 10px;
   box-shadow: 5px 5px 10px 3px #888;
+}
+
+.title {
+  font-size: 1.3em;
+  font-family: "Poppins";
+  margin-bottom: 30px;
+}
+
+.cardWrapper {
+  animation: animScale 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform: scale(1.5);
+}
+
+@keyframes animScale {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1.5);
+  }
 }
 
 .btnContainer {
