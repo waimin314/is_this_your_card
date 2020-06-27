@@ -17,7 +17,7 @@ export default function Card(props) {
 
   const numStyle = {
     fontSize: "20px",
-    fontFamily: "Poppins",
+    fontFamily: "Poppins,sans-serif",
     fontWeight: "400",
     color: "#3D3B90",
   };
