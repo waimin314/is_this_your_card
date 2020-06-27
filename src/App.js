@@ -8,9 +8,9 @@ const TOTAL_CARDS = 24;
 const TOTAL_COL = 3;
 const CARDS_PER_COL = TOTAL_CARDS / TOTAL_COL;
 const INSTUCTIONS = [
-  "Pick a card and select its column",
+  "Pick a number and select its column",
   "Select its column again",
-  "Is this your card?",
+  "Is this your Number?",
 ];
 
 class App extends Component {

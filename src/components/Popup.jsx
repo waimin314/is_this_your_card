@@ -8,7 +8,7 @@ export default function Popup(props) {
   return (
     <div className="container">
       <div className="content">
-        <div className="title">Is this your card?</div>
+        <div className="title">Is this your Number?</div>
         <div className="cardWrapper">
           <Card number={props.number} />
         </div>

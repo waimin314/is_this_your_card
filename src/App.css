@@ -1,7 +1,7 @@
 .main {
-  width: 240px;
+  width: 270px;
   margin: auto;
-  background-color: #5ab1bb;
+  background-color: #56cfe1;
   border-radius: 5px;
   padding: 10px;
 }
@@ -19,7 +19,7 @@
 }
 
 .button {
-  background-color: #7877c7;
+  background-color: #5e60ce;
   border-radius: 5px;
   padding: 8px;
   margin-bottom: 10px;
@@ -27,23 +27,24 @@
   font-weight: 500;
   color: white;
   font-family: "Poppins", sans-serif;
-  box-shadow: inset 0 -10px 0 -6px rgba(0, 0, 0, 0.17);
+  box-shadow: inset 0 -10px 0 -6px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease-in-out;
 }
 
 .button:hover {
   cursor: pointer;
-  transform: translateY(-3px);
+  transform: translateY(-5px);
 }
 
 .button:active {
-  transform: scale(1.1);
+  transform: scale(1.2);
 }
 
 .instruction {
   max-width: 400px;
   margin: 3px auto;
-  background-color: #8483c3;
-  border: 1px solid purple;
+  background-color: #5e60ce;
+  /* border: 1px solid purple; */
   border-radius: 2px;
   padding: 5px;
   font-family: "Poppins", sans-serif;
