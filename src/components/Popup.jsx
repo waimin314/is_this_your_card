@@ -5,12 +5,16 @@ import "./../styles/Popup.css";
 export default function Popup(props) {
   if (!props.isVisible) return null;
 
+  const title = props.number.length !== 1?'Invalid number':'Is this your Number?'
+
   return (
     <div className="container">
       <div className="content">
-        <div className="title">Is this your Number?</div>
+        <div className="title">{title}</div>
         <div className="cardWrapper">
-          <Card number={props.number} />
+          {
+            props.number.length!==1?'Please try again':<Card number={props.number} />
+          }
         </div>
         <div className="btnContainer">
           <button onClick={props.restartHandler} className="btn btn-restart">

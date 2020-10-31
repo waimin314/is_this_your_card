@@ -31,7 +31,7 @@ class App extends Component {
       tmp_nums.slice(CARDS_PER_COL * 1, CARDS_PER_COL * 2)
     );
     this.setInstruction();
-    this.setState({ stage: this.state.stage + 1 }, this.showPopup);
+    this.setState({ stage: this.state.stage + 1 });
   };
 
   setInstruction = () => {
@@ -53,7 +53,6 @@ class App extends Component {
 
   showPopup = () => {
     if (this.state.stage === 3) {
-      console.log('Show Popup');
     }
   };
 
@@ -65,7 +64,6 @@ class App extends Component {
         newNumbers.push(this.state.numbers[j]);
       }
     }
-    console.log(newNumbers);
 
     let col_1 = newNumbers.slice(CARDS_PER_COL * 0, CARDS_PER_COL); // 1 to 9
     let col_2 = newNumbers.slice(CARDS_PER_COL * 1, CARDS_PER_COL * 2); // 10 to 18
@@ -104,14 +102,9 @@ class App extends Component {
         if (selectedNums.includes(n)) newPosNums.push(n);
       });
     }
-    this.setState(
-      {
-        possibleNums: newPosNums,
-      },
-      () => {
-        console.log(this.state.possibleNums);
-      }
-    );
+    this.setState({
+      possibleNums: newPosNums,
+    });
   };
 
   getRandNumArray = () => {
@@ -125,7 +118,7 @@ class App extends Component {
 
   shuffle = (arr) => {
     //Shuffle;
-    for (let j = TOTAL_CARDS - 1; j >= 0; j--) {
+    for (let j = arr.length - 1; j >= 0; j--) {
       let random = Math.floor(Math.random() * j);
       let tmp = arr[random];
       arr[random] = arr[j];
