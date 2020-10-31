@@ -1,16 +1,16 @@
-import React, { Component } from "react";
-import "./App.css";
-import Card from "./components/Card";
-import Popup from "./components/Popup";
-import FlipMove from "react-flip-move";
+import React, { Component } from 'react';
+import './App.css';
+import Card from './components/Card';
+import Popup from './components/Popup';
+import FlipMove from 'react-flip-move';
 
 const TOTAL_CARDS = 24;
 const TOTAL_COL = 3;
 const CARDS_PER_COL = TOTAL_CARDS / TOTAL_COL;
 const INSTUCTIONS = [
-  "Pick a number and select its column",
-  "Select its column again",
-  "Is this your Number?",
+  'Pick a number and select its column',
+  'Select its column again',
+  'Is this your Number?',
 ];
 
 class App extends Component {
@@ -47,13 +47,13 @@ class App extends Component {
         this.setState({ instruction: INSTUCTIONS[2] });
         break;
       default:
-        console.log("Invalid stage " + this.state.stage + 1);
+        console.log('Invalid stage ' + this.state.stage + 1);
     }
   };
 
   showPopup = () => {
     if (this.state.stage === 3) {
-      console.log("Show Popup");
+      console.log('Show Popup');
     }
   };
 
@@ -120,14 +120,19 @@ class App extends Component {
     // Populate with TOTAL_CARDS numbers
     for (let i = 1; i <= TOTAL_CARDS; i++) numArray.push(i);
 
+    return this.shuffle(numArray);
+  };
+
+  shuffle = (arr) => {
     //Shuffle;
     for (let j = TOTAL_CARDS - 1; j >= 0; j--) {
       let random = Math.floor(Math.random() * j);
-      let tmp = numArray[random];
-      numArray[random] = numArray[j];
-      numArray[j] = tmp;
+      let tmp = arr[random];
+      arr[random] = arr[j];
+      arr[j] = tmp;
     }
-    return numArray;
+
+    return arr;
   };
 
   renderGrid = () => {
@@ -152,8 +157,8 @@ class App extends Component {
   render() {
     return (
       <div>
-        <div className="instruction">{this.state.instruction}</div>
-        <div className="main">
+        <div className='instruction'>{this.state.instruction}</div>
+        <div className='main'>
           <Popup
             number={this.state.possibleNums}
             isVisible={this.state.stage === 3 ? true : false}
@@ -161,22 +166,22 @@ class App extends Component {
           />
 
           <FlipMove
-            easing="ease-in-out"
+            easing='ease-in-out'
             duration={500}
             staggerDelayBy={20}
-            className="grid-container"
+            className='grid-container'
           >
             {this.renderGrid()}
           </FlipMove>
 
-          <div className="buttons-container">
-            <div className="button" onClick={() => this.execute(1)}>
+          <div className='buttons-container'>
+            <div className='button' onClick={() => this.execute(1)}>
               Select
             </div>
-            <div className="button" onClick={() => this.execute(2)}>
+            <div className='button' onClick={() => this.execute(2)}>
               Select
             </div>
-            <div className="button" onClick={() => this.execute(3)}>
+            <div className='button' onClick={() => this.execute(3)}>
               Select
             </div>
           </div>
